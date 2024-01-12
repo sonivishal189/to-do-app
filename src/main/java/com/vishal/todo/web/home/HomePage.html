@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns:wicket="http://wicket.apache.org">
+
+<head>
+	<meta charset="utf-8" />
+	<title>To-Do-App</title>
+	<link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+		integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" rel="stylesheet">
+</head>
+
+<body>
+	<div>
+		<nav class="navbar bg-secondary bg-gradient">
+			<div class="container-fluid">
+				<a class="navbar-brand"
+					href="http://localhost:8080/wicket/bookmarkable/com.vishal.todo.web.home.HomePage">
+					<img alt="Logo" class="d-inline-block align-text-top" height="24" src="home.png" width="30">
+					<span class="text-white p-2"> Dream House Realty </span>
+					<button class="btn text-white" href="#">About</button>
+				</a>
+				<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+						<li class="nav-item">
+							<a class="nav-link active" aria-current="page" href="#">About</a>
+						</li>
+					</ul>
+				</div>
+				<form wicket:id="logout" class="d-flex">
+					<input class="btn btn-warning btn-large" type="submit" value="Logout" />
+				</form>
+			</div>
+		</nav>
+	</div>
+	<h2> </h2>
+	<div class="container">
+		<div class="card shadow p-2 rounded text-center">
+			<div class="card-header bg-white">
+				<h2 wicket:id="welcomeMsg">Hello</h2>
+			</div>
+			<div class="card-body ">
+				<div class="row mb-3">
+					<div class="col-4">
+						<!-- Add Building trigger modal starts -->
+						<button type="button" class="btn btn-primary" data-bs-toggle="modal"
+							data-bs-target="#addBuildingModal">
+							Add New Building
+						</button>
+
+						<div class="modal fade" id="addBuildingModal" tabindex="-1"
+							aria-labelledby="addBuildingModalLabel" aria-hidden="true">
+							<div class="modal-dialog">
+								<div class="modal-content">
+									<div class="modal-header">
+										<h5 class="modal-title" id="addBuildingModalLabel">Add Building Details</h5>
+										<button type="button" class="btn-close" data-bs-dismiss="modal"
+											aria-label="Close"></button>
+									</div>
+									<div class="modal-body">
+										<form>
+											<p style="color: red"></p>
+											<div class="mb-3">
+												<input class="form-control" placeholder="Building Name" type="text">
+											</div>
+											<div class="input-group mb-3">
+												<input class="form-control" placeholder="No. of floors" type="text">
+												<span> </span>
+												<input class="form-control" placeholder="No.of flats" type="text">
+											</div>
+											<input class="btn btn-primary btn-large" type="submit"
+												value="Add Building" />
+										</form>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- Add Building trigger modal ends -->
+					</div>
+					<div class="col-4">
+						<button type="button" class="btn btn-secondary">
+							Add New Employee
+						</button>
+					</div>
+				</div>
+				<div class="row mb-3">
+					<button type="button" class="btn btn-success">
+						Add New Task
+					</button>
+				</div>
+				<div class="row mb-3">
+					<button type="button" class="btn btn-info">
+						View Tasks
+					</button>
+				</div>
+
+			</div>
+		</div>
+	</div>
+	<script crossorigin="anonymous" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

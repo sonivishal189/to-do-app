@@ -3,7 +3,6 @@ package com.vishal.todo.dao;
 import com.vishal.todo.model.ToDoTask;
 import com.vishal.todo.util.HibernateUtil;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.wicket.util.thread.Task;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 

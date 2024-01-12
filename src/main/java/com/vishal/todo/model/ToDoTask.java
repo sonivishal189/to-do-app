@@ -1,6 +1,5 @@
 package com.vishal.todo.model;
 
-import com.vishal.todo.util.TaskStatus;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

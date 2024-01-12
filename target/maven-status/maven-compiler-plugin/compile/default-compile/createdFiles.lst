@@ -1,2 +1,4 @@
+com/vishal/todo/web/pages/LoginPage.class
+com/vishal/todo/web/pages/HomePage.class
+com/vishal/todo/web/login/LoginForm.class
 com/vishal/todo/WicketApplication.class
-com/vishal/todo/HomePage.class
