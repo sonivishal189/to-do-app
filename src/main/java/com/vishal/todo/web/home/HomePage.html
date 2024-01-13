@@ -9,15 +9,28 @@
 <body>
 	<wicket:extend>
 		<div class="container">
-			<div class="card shadow p-2 rounded text-center mt-3">
-				<div class="card-header bg-white">
+			<div class="card shadow p-2 rounded mt-3">
+				<div class="card-header bg-white text-center">
 					<h2 wicket:id="welcomeMsg">Hello</h2>
 				</div>
 				<div class="card-body ">
-					<div class="row mb-3">
-						<button type="button" wicket:id="viewAllTasks" class="btn btn-info">
+					<div class="mb-3">
+						<button type="button" wicket:id="viewAllTasks" class=" btn btn-lg btn-outline-dark">
 							View All Tasks
-						</button>
+						</button> <span class="text-danger">  Click here to see all tasks.</span>
+					</div>
+					<div class="row mb-3 text-left">
+						<p>To-Do App is a application developed using Java, Apache Wicket, Hibernate, HTML and Bootstrap. This app provides feature to manage all tasks at one place.
+						Various features provided are:
+						<ul>
+							<li>Create a new task for a building and assign it to a userDetail.</li>
+							<li>View all task list with task title, task owner and building name for which this task is created.</li>
+							<li>User can also view each task in details by selecting task and clicking on view task button which will show task id, task title, task assigned to, building for which task is created, who created task, what is the status of task, who updated it and also create and update data time.</li>
+							<li>User can also edit a task selecting task and clicking edit button.</li>
+							<li>User can delete 1 or tasks at a time by selecting task/s and clicking delete button.</li>
+							<li>This app internally updates the details of userDetail who created or updated a task along with timestamp.</li>
+						</ul>
+						</p>
 					</div>
 				</div>
 			</div>

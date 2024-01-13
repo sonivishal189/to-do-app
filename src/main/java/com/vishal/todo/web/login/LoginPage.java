@@ -1,13 +1,18 @@
 package com.vishal.todo.web.login;
 
+import com.vishal.todo.service.UserDetailService;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.wicket.markup.head.CssHeaderItem;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.basic.Label;
 
+@Slf4j
 public class LoginPage extends WebPage {
     private static final long serialVersionUID = 1L;
+
+    private static final UserDetailService USER_DETAIL_SERVICE = new UserDetailService();
 
     public LoginPage() {
         loadLoginPage("");
@@ -19,7 +24,10 @@ public class LoginPage extends WebPage {
 
     private void loadLoginPage(String label) {
         add(new Label("loginMsg", label));
-        add(new LoginForm("loginForm"));
+        LoginForm loginForm = new LoginForm("loginForm");
+        add(loginForm);
+        NewUserRegistrationForm userRegistrationForm = new NewUserRegistrationForm("registerNewUser");
+        add(userRegistrationForm);
     }
 
     @Override

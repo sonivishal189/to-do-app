@@ -9,7 +9,7 @@
 <body>
     <div class="container">
         <div class="row mt-3">
-            <h2 class="text-danger" wicket:id="loginMsg">Login Message</h2>
+            <h3 class="text-danger" wicket:id="loginMsg">Login Message</h3>
             <div class="card shadow-lg bg-body rounded">
                 <div class="row">
                     <div class="col-lg-8 p-0">
@@ -20,15 +20,62 @@
                         <form wicket:id="loginForm">
                             <h5 class="text-danger" wicket:id="loginStatus">Login status</h5>
                             <div class="mb-3">
-                                <label class="form-label">User Name</label>
-                                <input class="form-control" required type="text" wicket:id="username">
+                                <input class="form-control" placeholder="Email" type="text" wicket:id="username">
                             </div>
-                            <div class="mb-3">
-                                <label class="form-label">Password</label>
-                                <input class="form-control" required type="password" wicket:id="password">
+                            <div class="mb-4">
+                                <input class="form-control" placeholder="Password" type="password" wicket:id="password">
                             </div>
-                            <input class="btn btn-primary btn-large" type="submit" value="Login" />
+                            <div class="row">
+                                <input class="btn btn-primary btn-large mb-3" type="submit" value="Login" />
+                            </div>
                         </form>
+                        <div class="row">
+                            <button type="button" class="btn btn-success btn-large mb-3" data-bs-toggle="modal"
+                                data-bs-target="#registerNewUser">
+                                Register New User
+                            </button>
+
+                            <div class="modal fade" id="registerNewUser" tabindex="-1"
+                                aria-labelledby="registerNewUserLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="registerNewUserLabel">Enter User Details</h5>
+                                            <button type="button" class="btn btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form class="form" wicket:id="registerNewUser">
+                                                <div class="input-group  mb-3">
+                                                    <span class="input-group-text">Email</span>
+                                                    <input wicket:id="userEmail" class="form-control" required
+                                                        type="email">
+                                                </div>
+                                                <div class="input-group  mb-3">
+                                                    <span class="input-group-text">First Name</span>
+                                                    <input wicket:id="firstName" class="form-control" required
+                                                        type="text">
+                                                </div>
+                                                <div class="input-group  mb-3">
+                                                    <span class="input-group-text">Last Name</span>
+                                                    <input wicket:id="lastName" class="form-control" required
+                                                        type="text">
+                                                </div>
+                                                <div class="input-group mb-3">
+                                                    <span class="input-group-text">Password</span>
+                                                    <input wicket:id="userPassword" class="form-control" required
+                                                        type="password">
+                                                </div>
+                                                <div class="row">
+                                                    <input type="submit" class="btn btn-success mb-3"
+                                                        value="Register New User">
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

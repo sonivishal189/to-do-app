@@ -23,6 +23,7 @@
 
         <!-- Names the annotated entity class -->
         <mapping class="com.vishal.todo.model.ToDoTask"/>
+        <mapping class="com.vishal.todo.model.UserDetail"/>
 
     </session-factory>
 

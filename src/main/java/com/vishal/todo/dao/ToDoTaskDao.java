@@ -23,7 +23,6 @@ public class ToDoTaskDao {
             if (null != transaction) {
                 transaction.rollback();
             }
-            return;
         }
     }
 
