@@ -1,9 +1,13 @@
+/Users/vishalsoni/IntelliJ-workspace/todo-app/src/main/java/com/vishal/todo/web/task/create/CreateTask.java
+/Users/vishalsoni/IntelliJ-workspace/todo-app/src/main/java/com/vishal/todo/web/task/create/CreateTaskForm.java
+/Users/vishalsoni/IntelliJ-workspace/todo-app/src/main/java/com/vishal/todo/web/home/HomePage.java
+/Users/vishalsoni/IntelliJ-workspace/todo-app/src/main/java/com/vishal/todo/web/BasePage.java
 /Users/vishalsoni/IntelliJ-workspace/todo-app/src/main/java/com/vishal/todo/model/ToDoTask.java
 /Users/vishalsoni/IntelliJ-workspace/todo-app/src/main/java/com/vishal/todo/web/login/LoginForm.java
 /Users/vishalsoni/IntelliJ-workspace/todo-app/src/main/java/com/vishal/todo/util/HibernateUtil.java
 /Users/vishalsoni/IntelliJ-workspace/todo-app/src/main/java/com/vishal/todo/util/TaskStatus.java
-/Users/vishalsoni/IntelliJ-workspace/todo-app/src/main/java/com/vishal/todo/web/pages/HomePage.java
 /Users/vishalsoni/IntelliJ-workspace/todo-app/src/main/java/com/vishal/todo/service/ToDoService.java
-/Users/vishalsoni/IntelliJ-workspace/todo-app/src/main/java/com/vishal/todo/web/pages/LoginPage.java
+/Users/vishalsoni/IntelliJ-workspace/todo-app/src/main/java/com/vishal/todo/web/task/view/ViewAllTask.java
+/Users/vishalsoni/IntelliJ-workspace/todo-app/src/main/java/com/vishal/todo/web/login/LoginPage.java
 /Users/vishalsoni/IntelliJ-workspace/todo-app/src/main/java/com/vishal/todo/WicketApplication.java
 /Users/vishalsoni/IntelliJ-workspace/todo-app/src/main/java/com/vishal/todo/dao/ToDoTaskDao.java

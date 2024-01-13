@@ -4,22 +4,20 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
+//@AllArgsConstructor
 @Entity
 @Table(name = "TO_DO_TASK")
 public class ToDoTask implements Serializable {
 
     @Id
+    @GeneratedValue
     @Column(name = "ID")
-    private String id;
+    private int id;
 
     @Column(name = "TASK")
     private String task;
@@ -33,4 +31,14 @@ public class ToDoTask implements Serializable {
     @Column(name = "STATUS")
     private String status;
 
+    @Column(name = "CREATED_BY")
+    private String createdBy;
+
+    public ToDoTask(String task, String empName, String buildingName, String status, String createdBy) {
+        this.task = task;
+        this.empName = empName;
+        this.buildingName = buildingName;
+        this.status = status;
+        this.createdBy = createdBy;
+    }
 }

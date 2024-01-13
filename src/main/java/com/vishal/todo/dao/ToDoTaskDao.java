@@ -7,6 +7,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import javax.persistence.Query;
+import java.util.List;
 
 @Slf4j
 public class ToDoTaskDao {
@@ -29,14 +30,11 @@ public class ToDoTaskDao {
         return task;
     }
 
-    public ToDoTask getTaskById(String taskId) {
+    public ToDoTask getTaskById(int taskId) {
         log.info("Fetch task for id: {}", taskId);
         ToDoTask taskInDb = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-            String hql = "FROM ToDoList t where t.id= :taskId";
-            Query query = session.createQuery(hql, ToDoTask.class);
-            query.setParameter("taskId", taskId);
-            taskInDb = (ToDoTask) query.getSingleResult();
+            taskInDb = session.byId(ToDoTask.class).getReference(taskId);
             log.info("Task fetched from DB is: {}", taskInDb);
         } catch (Exception exp) {
             log.error("Error while saving task: {}", exp.getMessage());
@@ -44,47 +42,32 @@ public class ToDoTaskDao {
         return taskInDb;
     }
 
-
-    public int deleteAll() {
-        log.info("Delete all records");
-        Transaction transaction = null;
-        int count = 0;
+    public List<ToDoTask> getAllTasks() {
+        log.info("Fetch all tasks");
+        List<ToDoTask> allTasks = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-            transaction = session.getTransaction();
-            String hql = "DELETE FROM ToDoList";
-            Query query = session.createQuery(hql);
-            count = query.executeUpdate();
-            transaction.commit();
-            log.info("Number of records deleted: {}", count);
+            String hql = "FROM ToDoTask";
+            allTasks = session.createQuery(hql, ToDoTask.class).list();
+            log.info("Task fetched from DB is: {}", allTasks);
         } catch (Exception exp) {
-            log.error("Error while deleting all records {}", exp.getMessage());
-            if (null != transaction) {
-                transaction.rollback();
-            }
+            log.error("Error while fetching all task: {}", exp.getMessage());
         }
-        return count;
+        return allTasks;
     }
 
-    public ToDoTask deleteById(String taskId) {
-        log.info("Delete Task with id {}", taskId);
+    public void deleteTask(ToDoTask task) {
+        log.info("Delete Task {}", task);
         Transaction transaction = null;
-        ToDoTask deletedTask = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-            transaction = session.getTransaction();
-            deletedTask = getTaskById(taskId);
-            String hql = "DELETE FROM ToDoList t where t.id= :taskId";
-            Query query = session.createQuery(hql);
-            query.setParameter("taskId", taskId);
-            query.executeUpdate();
+            transaction = session.beginTransaction();
+            session.delete(task);
             transaction.commit();
-            log.info("Successfully deleted task for id: {}", taskId);
+            log.info("Successfully deleted task {}", task);
         } catch (Exception exp) {
-            log.error("Error while deleting task for id: {} {}", taskId, exp.getMessage());
+            log.error("Error while deleting task for id: {} {}", task, exp.getMessage());
             if (null != transaction) {
                 transaction.rollback();
             }
-            deletedTask = null;
         }
-        return deletedTask;
     }
 }

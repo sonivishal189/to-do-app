@@ -10,16 +10,17 @@ import org.apache.wicket.request.mapper.parameter.PageParameters;
 
 public class LoginPage extends WebPage {
     private static final long serialVersionUID = 1L;
-    private Label loginMsg;
+
     public LoginPage() {
-        loginMsg = new Label("loginMsg", "");
-        add(loginMsg);
-        add(new LoginForm("loginForm"));
+        loadLoginPage("");
     }
 
     public LoginPage(String loginMessage) {
-        loginMsg = new Label("loginMsg", loginMessage);
-        add(loginMsg);
+        loadLoginPage(loginMessage);
+    }
+
+    private void loadLoginPage(String label) {
+        add(new Label("loginMsg", label));
         add(new LoginForm("loginForm"));
     }
 

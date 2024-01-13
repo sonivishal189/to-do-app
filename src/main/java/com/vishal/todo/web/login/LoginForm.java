@@ -29,7 +29,7 @@ public class LoginForm extends Form<Model<String>> {
         String username = (String) usernameField.getDefaultModelObject();
         String password = (String) passwordField.getDefaultModelObject();
 
-        if (username.equals("Vishal") && password.equals("pass")) {
+        if (username.equals("v") && password.equals("v")) {
             loggedInUser = username;
             setResponsePage(HomePage.class);
         } else {

@@ -1,4 +1,5 @@
-com/vishal/todo/web/pages/LoginPage.class
-com/vishal/todo/web/pages/HomePage.class
 com/vishal/todo/web/login/LoginForm.class
+com/vishal/todo/web/BasePage.class
+com/vishal/todo/web/task/view/ViewAllTask$1$1.class
+com/vishal/todo/web/BasePage$1.class
 com/vishal/todo/WicketApplication.class
