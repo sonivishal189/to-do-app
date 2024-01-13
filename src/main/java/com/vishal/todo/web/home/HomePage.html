@@ -9,52 +9,11 @@
 <body>
 	<wicket:extend>
 		<div class="container">
-			<div class="card shadow p-2 rounded text-center">
+			<div class="card shadow p-2 rounded text-center mt-3">
 				<div class="card-header bg-white">
 					<h2 wicket:id="welcomeMsg">Hello</h2>
 				</div>
 				<div class="card-body ">
-					<div class="row mb-3">
-						<!-- Add new Task starts -->
-						<button type="button" class="btn btn-primary" data-bs-toggle="modal"
-							data-bs-target="#addBuildingModal">
-							Create New Task
-						</button>
-
-						<div class="modal fade" id="addBuildingModal" tabindex="-1"
-							aria-labelledby="addBuildingModalLabel" aria-hidden="true">
-							<div class="modal-dialog">
-								<div class="modal-content">
-									<div class="modal-header">
-										<h5 class="modal-title" id="addBuildingModalLabel">Create New Task</h5>
-										<button type="button" class="btn-close" data-bs-dismiss="modal"
-											aria-label="Close"></button>
-									</div>
-									<div class="modal-body">
-										<form class="form" wicket:id="createTask">
-											<div class="input-group  mb-3">
-												<span class="input-group-text">Task</span>
-												<input wicket:id="task" class="form-control" required type="text">
-											</div>
-											<div class="input-group mb-3">
-												<span class="input-group-text">Assign To</span>
-												<input wicket:id="empName" class="form-control" type="text">
-											</div>
-											<div class="input-group mb-3">
-												<span class="input-group-text">Building Name</span>
-												<input wicket:id="buildingName" class="form-control" type="text">
-											</div>
-											<div class="mb-3">
-												<input type="submit" class="d-grid gap-2 col-6 mx-auto btn btn-success"
-													value="Create New Task">
-											</div>
-										</form>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- Add new Task ends -->
-					</div>
 					<div class="row mb-3">
 						<button type="button" wicket:id="viewAllTasks" class="btn btn-info">
 							View All Tasks

@@ -20,16 +20,13 @@ public class EditTaskForm extends Form<Model<String>> {
 
     public EditTaskForm(String id, int taskId) {
         super(id);
-        log.info("Edit task {} for form {}", taskId, id );
+        log.info("Edit task {} for form {}", taskId, id);
         taskIdToEdit = taskId;
+
         ToDoTask taskToEdit = service.getTaskById(taskId);
         editTask = new TextField<String>("editTask", Model.of(taskToEdit.getTask()));
         editEmpName = new TextField<String>("editEmpName", Model.of(taskToEdit.getEmpName()));
         editBuildingName = new TextField<String>("editBuildingName", Model.of(taskToEdit.getBuildingName()));
-
-//        editTask = new TextField<String>("editTask", Model.of(""));
-//        editEmpName = new TextField<String>("editEmpName", Model.of(""));
-//        editBuildingName = new TextField<String>("editBuildingName", Model.of(""));
 
         log.info("Add text fields to page");
         add(editTask);

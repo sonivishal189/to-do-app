@@ -3,6 +3,7 @@ package com.vishal.todo.web.task.create;
 import com.vishal.todo.model.ToDoTask;
 import com.vishal.todo.service.ToDoService;
 import com.vishal.todo.web.login.LoginForm;
+import com.vishal.todo.web.task.view.ViewAllTask;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.TextField;
@@ -44,5 +45,7 @@ public class CreateTaskForm extends Form<Model<String>> {
         task.setDefaultModelObject("");
         empName.setDefaultModelObject("");
         buildingName.setDefaultModelObject("");
+
+        setResponsePage(ViewAllTask.class);
     }
 }

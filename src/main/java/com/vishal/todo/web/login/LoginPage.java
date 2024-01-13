@@ -1,12 +1,10 @@
 package com.vishal.todo.web.login;
 
-import lombok.NoArgsConstructor;
 import org.apache.wicket.markup.head.CssHeaderItem;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.basic.Label;
-import org.apache.wicket.request.mapper.parameter.PageParameters;
 
 public class LoginPage extends WebPage {
     private static final long serialVersionUID = 1L;
@@ -23,15 +21,6 @@ public class LoginPage extends WebPage {
         add(new Label("loginMsg", label));
         add(new LoginForm("loginForm"));
     }
-
-//    public LoginPage(final PageParameters parameters, String msg) {
-//        super(parameters);
-//
-//        // TODO Add your page's components here
-//        add(new LoginForm("loginForm"));
-//        add(new Label("loginMsg", "msg"));
-//
-//    }
 
     @Override
     public void renderHead(IHeaderResponse response) {

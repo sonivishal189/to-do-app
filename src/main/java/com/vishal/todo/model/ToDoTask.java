@@ -1,6 +1,5 @@
 package com.vishal.todo.model;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -10,7 +9,6 @@ import java.util.Date;
 
 @Data
 @NoArgsConstructor
-//@AllArgsConstructor
 @Entity
 @Table(name = "TO_DO_TASK")
 public class ToDoTask implements Serializable {

@@ -13,16 +13,8 @@ public class ToDoService {
 
     private final ToDoTaskDao toDoTaskDao = new ToDoTaskDao();
 
-    public ToDoTask saveOrUpdate(ToDoTask toDoTask) {
-        log.info("Got request to create task: {}", toDoTask);
-
-        //validate data
-        if (null == toDoTask.getTask() || toDoTask.getTask().isBlank()) {
-            log.error("Task cannot be null or empty");
-        }
-        if (null == toDoTask.getBuildingName() || toDoTask.getBuildingName().isBlank()) {
-            log.error("building name cannot be null");
-        }
+    public void saveOrUpdate(ToDoTask toDoTask) {
+        log.info("Got request to create/update task: {}", toDoTask);
 
         // set required fields in task
         if (null == toDoTask.getEmpName() || toDoTask.getEmpName().isBlank()) {
@@ -30,13 +22,14 @@ public class ToDoService {
         } else {
             toDoTask.setStatus(TaskStatus.ASSIGNED);
         }
+
         if (0 == toDoTask.getId()) {
             toDoTask.setCreatedOn(new Date());
         } else {
             toDoTask.setUpdatedOn(new Date());
         }
 
-        return toDoTaskDao.saveOrUpdate(toDoTask);
+        toDoTaskDao.saveOrUpdate(toDoTask);
     }
 
     public ToDoTask getTaskById(int taskId) {

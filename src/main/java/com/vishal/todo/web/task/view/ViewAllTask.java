@@ -3,10 +3,10 @@ package com.vishal.todo.web.task.view;
 import com.vishal.todo.model.ToDoTask;
 import com.vishal.todo.service.ToDoService;
 import com.vishal.todo.web.BasePage;
+import com.vishal.todo.web.task.create.CreateTaskForm;
 import com.vishal.todo.web.task.edit.EditTaskPage;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.wicket.ajax.AjaxRequestTarget;
-import org.apache.wicket.ajax.markup.html.AjaxLink;
 import org.apache.wicket.ajax.markup.html.form.AjaxCheckBox;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.Button;
@@ -14,7 +14,6 @@ import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.model.Model;
-import org.apache.wicket.util.thread.Task;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,6 +33,7 @@ public class ViewAllTask extends BasePage {
 
         selectedTasks = new ArrayList<>();
         allTasks = service.getAllTasks();
+        selectedTasks.clear();
 
         Form<Void> form = new Form<>("form");
         add(form);
@@ -47,6 +47,13 @@ public class ViewAllTask extends BasePage {
         deleteSelectedTasks(form);
 
         editSelectedTask(form);
+
+        addCreateTaskForm(form);
+    }
+
+    private void addCreateTaskForm(Form<Void> form) {
+        CreateTaskForm createTaskForm = new CreateTaskForm("createTask");
+        add(createTaskForm);
     }
 
     private void editSelectedTask(Form<Void> form) {
@@ -60,12 +67,14 @@ public class ViewAllTask extends BasePage {
                     return;
                 }
                 if (selectedTasks.size() > 1) {
-                    viewPageMsgLabel.setDefaultModel(Model.of("You cannot delete more than 1 task at a time."));
+                    viewPageMsgLabel.setDefaultModel(Model.of("You cannot Edit more than 1 task at a time."));
+                    selectedTasks.clear();
                     return;
                 }
                 EditTaskPage.taskId = selectedTasks.get(0).getId();
                 setResponsePage(EditTaskPage.class);
                 viewPageMsgLabel.setDefaultModel(Model.of(""));
+                selectedTasks.clear();
             }
         });
     }
@@ -81,12 +90,13 @@ public class ViewAllTask extends BasePage {
                     viewPageMsgLabel.setDefaultModel(Model.of("Select 1 or more Task to View"));
                     return;
                 }
-                for(ToDoTask selectedTask : selectedTasks) {
+                for (ToDoTask selectedTask : selectedTasks) {
                     selectedTaskIds.add(selectedTask.getId());
                 }
                 ViewSelectedTask.selectedTaskId.addAll(selectedTaskIds);
-                setResponsePage(ViewSelectedTask.class);
                 viewPageMsgLabel.setDefaultModel(Model.of(""));
+                selectedTasks.clear();
+                setResponsePage(ViewSelectedTask.class);
             }
         });
     }

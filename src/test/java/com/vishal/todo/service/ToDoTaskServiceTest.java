@@ -20,8 +20,7 @@ public class ToDoTaskServiceTest {
         ToDoService service = new ToDoService();
         ToDoTask task = new ToDoTask(TEST_TASK_TO_DO, TEST_EMP_NAME, TEST_BUILDING_NAME, TaskStatus.NEW, TEST_CREATED_BY);
         service.deleteTask(task);
-        ToDoTask newTask = service.saveOrUpdate(task);
-        log.info("New Task created is: {}", newTask);
+        service.saveOrUpdate(task);
 //            Assertions.assertEquals(task.getId(), newTask.getId());
     }
 

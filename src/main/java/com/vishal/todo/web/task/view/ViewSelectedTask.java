@@ -7,12 +7,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
 import org.apache.wicket.markup.html.basic.Label;
-import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
-import org.apache.wicket.model.Model;
 
-import javax.swing.plaf.SplitPaneUI;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,11 +25,11 @@ public class ViewSelectedTask extends BasePage {
         for (int taskId : selectedTaskId) {
             selectedTaskToView.add(service.getTaskById(taskId));
         }
+        selectedTaskId.clear();
 
         ListView<ToDoTask> selectedViewList = new ListView<ToDoTask>("selectedTaskViewList", selectedTaskToView) {
             @Override
             protected void populateItem(ListItem<ToDoTask> listItem) {
-                log.info("####### populating selected tasks #######");
                 ToDoTask toDoTask = listItem.getModelObject();
                 listItem.add(new Label("id", toDoTask.getId()));
                 listItem.add(new Label("task", toDoTask.getTask()));
@@ -41,6 +38,7 @@ public class ViewSelectedTask extends BasePage {
                 listItem.add(new Label("status", toDoTask.getStatus()));
                 listItem.add(new Label("createdBy", toDoTask.getCreatedBy()));
                 listItem.add(new Label("createdOn", toDoTask.getCreatedOn()));
+                listItem.add(new Label("updatedBy", toDoTask.getCreatedBy()));
                 listItem.add(new Label("updatedOn", toDoTask.getUpdatedOn()));
             }
         };
@@ -52,12 +50,6 @@ public class ViewSelectedTask extends BasePage {
                 log.info("Back button pressed........");
                 setResponsePage(ViewAllTask.class);
             }
-
-//            @Override
-//            public void onSubmit() {
-//                log.info("Back button pressed........");
-//                setResponsePage(ViewAllTask.class);
-//            }
         });
     }
 }
