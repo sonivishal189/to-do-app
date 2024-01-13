@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:wicket="http://wicket.apache.org">
+
+<head>
+    <meta charset="utf-8" />
+    <title>To-Do-App</title>
+</head>
+
+<body>
+<wicket:extend>
+    <div class="container">
+        <div class="row m-4">
+        <form class="form" wicket:id="editSelectedTask">
+            <div class="input-group  mb-3">
+                <span class="input-group-text">Task</span>
+                <input wicket:id="editTask" class="form-control" required type="text">
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text">Assign To</span>
+                <input wicket:id="editEmpName" class="form-control" type="text">
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text">Building Name</span>
+                <input wicket:id="editBuildingName" class="form-control" type="text">
+            </div>
+            <div class="mb-3">
+                <input type="submit" class="d-grid gap-2 col-6 mx-auto btn btn-success" value="Edit Task">
+            </div>
+        </form>
+        </div>
+    </div>
+</wicket:extend>
+</body>
+
+</html>

@@ -3,7 +3,6 @@ package com.vishal.todo.service;
 import com.vishal.todo.model.ToDoTask;
 import com.vishal.todo.util.TaskStatus;
 import lombok.extern.slf4j.Slf4j;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -21,7 +20,7 @@ public class ToDoTaskServiceTest {
         ToDoService service = new ToDoService();
         ToDoTask task = new ToDoTask(TEST_TASK_TO_DO, TEST_EMP_NAME, TEST_BUILDING_NAME, TaskStatus.NEW, TEST_CREATED_BY);
         service.deleteTask(task);
-        ToDoTask newTask = service.addNewToDoTask(task);
+        ToDoTask newTask = service.saveOrUpdate(task);
         log.info("New Task created is: {}", newTask);
 //            Assertions.assertEquals(task.getId(), newTask.getId());
     }

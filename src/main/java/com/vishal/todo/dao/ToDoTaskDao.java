@@ -6,18 +6,17 @@ import lombok.extern.slf4j.Slf4j;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import javax.persistence.Query;
 import java.util.List;
 
 @Slf4j
 public class ToDoTaskDao {
 
-    public ToDoTask save(ToDoTask task) {
+    public ToDoTask saveOrUpdate(ToDoTask task) {
         log.info("Task to create is {}", task);
         Transaction transaction = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
-            session.persist(task);
+            session.saveOrUpdate(task);
             transaction.commit();
         } catch (Exception exp) {
             log.error("Error while task creation: {}", exp.getMessage());

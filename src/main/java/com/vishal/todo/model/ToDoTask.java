@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 
 @Data
 @NoArgsConstructor
@@ -33,6 +34,15 @@ public class ToDoTask implements Serializable {
 
     @Column(name = "CREATED_BY")
     private String createdBy;
+
+    @Column(name = "UPDATED_BY")
+    private String updatedBy;
+
+    @Column(name = "CREATED_ON")
+    private Date createdOn;
+
+    @Column(name = "UPDATED_ON")
+    private Date updatedOn;
 
     public ToDoTask(String task, String empName, String buildingName, String status, String createdBy) {
         this.task = task;

@@ -8,10 +8,21 @@
 
 <body>
     <wicket:extend>
-        <div class="container mb-3">
-            <form wicket:id="form">
-                <div class="col-4 mb-3">
-                    <button wicket:id="deleteButton" class="btn btn-danger">Delete Task</button>
+        <div class="container">
+            <form class="m-5" wicket:id="form">
+                <div class="row">
+                    <n2 wicket:id="viewPageMsg"></n2>
+                </div>
+                <div class="row">
+                    <div class="col-4 mb-3">
+                        <button wicket:id="viewTaskButton" class="btn btn-primary">View Task</button>
+                    </div>
+                    <div class="col-4 mb-3">
+                        <button wicket:id="deleteTaskButton" class="btn btn-danger">Delete Task</button>
+                    </div>
+                    <div class="col-4 mb-3">
+                        <button wicket:id="editTaskButton" class="btn btn-warning">Edit Task</button>
+                    </div>
                 </div>
                 <table class="table table-hover">
                     <thead>
@@ -27,7 +38,7 @@
                     </thead>
                     <tbody>
                         <tr wicket:id="todoList">
-                            <td><input type="checkbox" wicket:id="selected"/></td>
+                            <td><input type="checkbox" wicket:id="selected" /></td>
                             <td wicket:id="id">ID</td>
                             <td wicket:id="task">Task</td>
                             <td wicket:id="empName">Employee</td>
