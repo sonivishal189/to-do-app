@@ -2,6 +2,7 @@ package com.vishal.todo.web.task.create;
 
 import com.vishal.todo.model.ToDoTask;
 import com.vishal.todo.service.ToDoService;
+import com.vishal.todo.util.TaskStatus;
 import com.vishal.todo.web.login.LoginForm;
 import com.vishal.todo.web.task.view.ViewAllTask;
 import lombok.extern.slf4j.Slf4j;
@@ -35,12 +36,7 @@ public class CreateTaskForm extends Form<Model<String>> {
         String assignedToVal = (String) empName.getDefaultModelObject();
         String buildingNameVal = (String) buildingName.getDefaultModelObject();
 
-        ToDoTask toDoTask = new ToDoTask();
-        toDoTask.setTask(taskMsgVal);
-        toDoTask.setEmpName(assignedToVal);
-        toDoTask.setBuildingName(buildingNameVal);
-        toDoTask.setCreatedBy(LoginForm.loggedInUser);
-        toDoTask.setCreatedOn(new Date());
+        ToDoTask toDoTask = createToDoTask(taskMsgVal, assignedToVal, buildingNameVal);
 
         log.info("Create new task {}", toDoTask);
         service.saveOrUpdate(toDoTask);
@@ -50,5 +46,20 @@ public class CreateTaskForm extends Form<Model<String>> {
         buildingName.setDefaultModelObject("");
 
         setResponsePage(ViewAllTask.class);
+    }
+
+    private ToDoTask createToDoTask(String taskMsgVal, String assignedToVal, String buildingNameVal) {
+        ToDoTask toDoTask = new ToDoTask();
+        toDoTask.setTask(taskMsgVal);
+        if (null == assignedToVal) {
+            toDoTask.setStatus(TaskStatus.NEW);
+        } else {
+            toDoTask.setEmpName(assignedToVal);
+            toDoTask.setStatus(TaskStatus.ASSIGNED);
+        }
+        toDoTask.setBuildingName(buildingNameVal);
+        toDoTask.setCreatedBy(LoginForm.loggedInUser);
+        toDoTask.setCreatedOn(new Date());
+        return toDoTask;
     }
 }

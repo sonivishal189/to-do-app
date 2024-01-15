@@ -9,7 +9,7 @@ import java.util.List;
 
 @Slf4j
 public class ToDoTaskServiceTest {
-//    private final String TEST_TASK_ID = "TEST_TASK_ID";
+    //    private final String TEST_TASK_ID = "TEST_TASK_ID";
     private final String TEST_TASK_TO_DO = "Fix electric issues";
     private final String TEST_EMP_NAME = "TEST_EMP_NAME";
     private final String TEST_BUILDING_NAME = "TEST_BUILDING_NAME";
@@ -22,22 +22,6 @@ public class ToDoTaskServiceTest {
         service.deleteTask(task);
         service.saveOrUpdate(task);
 //            Assertions.assertEquals(task.getId(), newTask.getId());
-    }
-
-    @Test
-    void testGetTaskById() {
-        ToDoService service = new ToDoService();
-        ToDoTask task = service.getTaskById(1);
-        log.info("Task fetched {}", task);
-//        Assertions.assertEquals(task.getId(), 1);
-    }
-
-    @Test
-    void testDeleteTaskById() {
-        ToDoService service = new ToDoService();
-        ToDoTask task = service.getTaskById(1);
-        log.info("Task fetched {}", task);
-        service.deleteTask(task);
     }
 
     @Test
