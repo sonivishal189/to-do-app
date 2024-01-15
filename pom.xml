@@ -41,6 +41,7 @@
 		</license>
 	</licenses>
 	<properties>
+		<java.version>21</java.version>
 		<wicket.version>9.16.0</wicket.version>
 		<jetty9.version>9.4.53.v20231009</jetty9.version>
 		<slf4j.version>2.0.9</slf4j.version>
