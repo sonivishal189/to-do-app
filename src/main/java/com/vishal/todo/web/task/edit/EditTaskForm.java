@@ -9,6 +9,8 @@ import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.model.Model;
 
+import java.util.Date;
+
 @Slf4j
 public class EditTaskForm extends Form<Model<String>> {
     private static final ToDoService service = new ToDoService();
@@ -45,6 +47,7 @@ public class EditTaskForm extends Form<Model<String>> {
         toDoTask.setEmpName(assignedToVal);
         toDoTask.setBuildingName(buildingNameVal);
         toDoTask.setUpdatedBy(LoginForm.loggedInUser);
+        toDoTask.setUpdatedOn(new Date());
 
         log.info("Got Request to update task {}", toDoTask);
         service.saveOrUpdate(toDoTask);

@@ -31,7 +31,7 @@ public class ViewAllTask extends BasePage {
 
     public ViewAllTask() {
 
-        if (LoginForm.loggedInUser.equals("LoggedOut")) {
+        if (LoginForm.loggedInUser.isBlank() || LoginForm.loggedInUser.equals("LoggedOut")) {
             setResponsePage(new LoginPage("Please login to proceed."));
             return;
         }
@@ -134,7 +134,7 @@ public class ViewAllTask extends BasePage {
                 listItem.add(new AjaxCheckBox("selected", Model.of(false)) {
                     @Override
                     protected void onUpdate(AjaxRequestTarget ajaxRequestTarget) {
-                        log.info("update happened {}", toDoTask);
+                        log.info("Task clicked {}", toDoTask);
                         if (selectedTasks.contains(toDoTask)) {
                             selectedTasks.remove(toDoTask);
                         } else {

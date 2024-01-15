@@ -5,7 +5,6 @@ import com.vishal.todo.model.ToDoTask;
 import com.vishal.todo.util.TaskStatus;
 import lombok.extern.slf4j.Slf4j;
 
-import java.util.Date;
 import java.util.List;
 
 @Slf4j
@@ -21,12 +20,6 @@ public class ToDoService {
             toDoTask.setStatus(TaskStatus.NEW);
         } else {
             toDoTask.setStatus(TaskStatus.ASSIGNED);
-        }
-
-        if (0 == toDoTask.getId()) {
-            toDoTask.setCreatedOn(new Date());
-        } else {
-            toDoTask.setUpdatedOn(new Date());
         }
 
         toDoTaskDao.saveOrUpdate(toDoTask);

@@ -22,7 +22,7 @@ public class ViewSelectedTask extends BasePage {
 
     public ViewSelectedTask() {
 
-        if (LoginForm.loggedInUser.equals("LoggedOut")) {
+        if (LoginForm.loggedInUser.isBlank() || LoginForm.loggedInUser.equals("LoggedOut")) {
             setResponsePage(new LoginPage("Please login to proceed."));
             return;
         }
@@ -45,7 +45,7 @@ public class ViewSelectedTask extends BasePage {
                 listItem.add(new Label("status", toDoTask.getStatus()));
                 listItem.add(new Label("createdBy", toDoTask.getCreatedBy()));
                 listItem.add(new Label("createdOn", toDoTask.getCreatedOn()));
-                listItem.add(new Label("updatedBy", toDoTask.getCreatedBy()));
+                listItem.add(new Label("updatedBy", toDoTask.getUpdatedBy()));
                 listItem.add(new Label("updatedOn", toDoTask.getUpdatedOn()));
             }
         };

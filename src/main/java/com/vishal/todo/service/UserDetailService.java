@@ -10,7 +10,7 @@ public class UserDetailService {
     private final UserDetailDao userDetailDao = new UserDetailDao();
 
     public void createUser(UserDetail userDetail) {
-        log.info("Creating user {}", userDetail);
+        log.info("Creating user");
         userDetailDao.save(userDetail);
     }
 

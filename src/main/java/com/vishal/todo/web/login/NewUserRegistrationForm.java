@@ -10,7 +10,6 @@ import org.apache.wicket.markup.html.form.PasswordTextField;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.model.Model;
 
-@Slf4j
 public class NewUserRegistrationForm extends Form<Model<String>> {
 
     private static final UserDetailService USER_DETAIL_SERVICE = new UserDetailService();
@@ -39,7 +38,6 @@ public class NewUserRegistrationForm extends Form<Model<String>> {
         String passVal = (String) userPassword.getDefaultModelObject();
 
         UserDetail userDetail = new UserDetail(userEmailVal, firstNameVal, lastNameVal, passVal);
-        log.info("Got Request to register new user {}", userDetail);
         USER_DETAIL_SERVICE.createUser(userDetail);
 
         userEmail.setDefaultModelObject("");

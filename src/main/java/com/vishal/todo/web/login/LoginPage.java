@@ -8,13 +8,13 @@ import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.basic.Label;
 
-@Slf4j
 public class LoginPage extends WebPage {
     private static final long serialVersionUID = 1L;
 
     private static final UserDetailService USER_DETAIL_SERVICE = new UserDetailService();
 
     public LoginPage() {
+        LoginForm.loggedInUser = "";
         loadLoginPage("");
     }
 
