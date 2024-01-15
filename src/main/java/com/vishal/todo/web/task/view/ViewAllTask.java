@@ -3,6 +3,8 @@ package com.vishal.todo.web.task.view;
 import com.vishal.todo.model.ToDoTask;
 import com.vishal.todo.service.ToDoService;
 import com.vishal.todo.web.BasePage;
+import com.vishal.todo.web.login.LoginForm;
+import com.vishal.todo.web.login.LoginPage;
 import com.vishal.todo.web.task.create.CreateTaskForm;
 import com.vishal.todo.web.task.edit.EditTaskPage;
 import lombok.extern.slf4j.Slf4j;
@@ -29,7 +31,10 @@ public class ViewAllTask extends BasePage {
 
     public ViewAllTask() {
 
-//        Label selectedTaskDetail = new Label("taskDetail", "");
+        if (LoginForm.loggedInUser.equals("LoggedOut")) {
+            setResponsePage(new LoginPage("Please login to proceed."));
+            return;
+        }
 
         selectedTasks = new ArrayList<>();
         allTasks = service.getAllTasks();
@@ -38,7 +43,6 @@ public class ViewAllTask extends BasePage {
         Form<Void> form = new Form<>("form");
         add(form);
         form.add(viewPageMsgLabel);
-//        form.add(selectedTaskDetail);
 
         loadAllTaskToView(form);
 

@@ -1,7 +1,10 @@
 package com.vishal.todo.web;
 
+import com.vishal.todo.web.home.HomePage;
 import com.vishal.todo.web.login.LoginForm;
 import com.vishal.todo.web.login.LoginPage;
+import org.apache.wicket.ajax.AjaxRequestTarget;
+import org.apache.wicket.ajax.markup.html.AjaxLink;
 import org.apache.wicket.markup.head.CssHeaderItem;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
@@ -24,8 +27,15 @@ public abstract class BasePage extends WebPage {
         add(new Form<>("logout") {
             @Override
             protected void onSubmit() {
-                LoginForm.loggedInUser = "";
+                LoginForm.loggedInUser = "LoggedOut";
                 setResponsePage(new LoginPage());
+            }
+        });
+
+        add(new AjaxLink<Void>("brandName") {
+            @Override
+            public void onClick(AjaxRequestTarget ajaxRequestTarget) {
+                setResponsePage(HomePage.class);
             }
         });
     }

@@ -3,6 +3,8 @@ package com.vishal.todo.web.task.view;
 import com.vishal.todo.model.ToDoTask;
 import com.vishal.todo.service.ToDoService;
 import com.vishal.todo.web.BasePage;
+import com.vishal.todo.web.login.LoginForm;
+import com.vishal.todo.web.login.LoginPage;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
@@ -19,6 +21,11 @@ public class ViewSelectedTask extends BasePage {
     public static List<Integer> selectedTaskId = new ArrayList<>();
 
     public ViewSelectedTask() {
+
+        if (LoginForm.loggedInUser.equals("LoggedOut")) {
+            setResponsePage(new LoginPage("Please login to proceed."));
+            return;
+        }
 
         List<ToDoTask> selectedTaskToView = new ArrayList<>();
 

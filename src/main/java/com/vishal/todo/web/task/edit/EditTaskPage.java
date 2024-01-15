@@ -1,6 +1,8 @@
 package com.vishal.todo.web.task.edit;
 
 import com.vishal.todo.web.BasePage;
+import com.vishal.todo.web.login.LoginForm;
+import com.vishal.todo.web.login.LoginPage;
 import com.vishal.todo.web.task.view.ViewAllTask;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.wicket.ajax.AjaxRequestTarget;
@@ -13,6 +15,12 @@ public class EditTaskPage extends BasePage {
     public static int taskId;
 
     public EditTaskPage() {
+
+        if (LoginForm.loggedInUser.equals("LoggedOut")) {
+            setResponsePage(new LoginPage("Please login to proceed."));
+            return;
+        }
+
         log.info("Edit task execution starts.......");
         EditTaskForm editTaskForm = new EditTaskForm("editSelectedTask", taskId);
         add(editTaskForm);

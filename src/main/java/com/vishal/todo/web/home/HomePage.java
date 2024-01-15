@@ -13,8 +13,9 @@ public class HomePage extends BasePage {
 
     public HomePage() {
 
-        if (LoginForm.loggedInUser.isBlank()) {
+        if (LoginForm.loggedInUser.equals("LoggedOut")) {
             setResponsePage(new LoginPage("Please login to proceed."));
+            return;
         }
 
         addWelcomeMessage();
