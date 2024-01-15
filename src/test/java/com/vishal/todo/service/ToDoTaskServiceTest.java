@@ -1,7 +1,7 @@
 package com.vishal.todo.service;
 
 import com.vishal.todo.model.ToDoTask;
-import com.vishal.todo.util.TaskStatus;
+import com.vishal.todo.util.Constants;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 
@@ -18,7 +18,7 @@ public class ToDoTaskServiceTest {
     @Test
     void testSaveTask() {
         ToDoService service = new ToDoService();
-        ToDoTask task = new ToDoTask(TEST_TASK_TO_DO, TEST_EMP_NAME, TEST_BUILDING_NAME, TaskStatus.NEW, TEST_CREATED_BY);
+        ToDoTask task = new ToDoTask(TEST_TASK_TO_DO, TEST_EMP_NAME, TEST_BUILDING_NAME, Constants.NEW, TEST_CREATED_BY);
         service.deleteTask(task);
         service.saveOrUpdate(task);
 //            Assertions.assertEquals(task.getId(), newTask.getId());

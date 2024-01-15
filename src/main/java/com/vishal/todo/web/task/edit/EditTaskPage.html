@@ -16,19 +16,19 @@
                 <form class="form" wicket:id="editSelectedTask">
                     <div class="input-group  mb-3">
                         <span class="input-group-text">Task</span>
-                        <input wicket:id="editTask" class="form-control" required type="text">
+                        <input wicket:id="task" class="form-control" required type="text">
                     </div>
                     <div class="input-group mb-3">
                         <span class="input-group-text">Assign To</span>
-                        <input wicket:id="editEmpName" class="form-control" required type="text">
+                        <select class="form-select" wicket:id="empName" required></select>
                     </div>
                     <div class="input-group mb-3">
                         <span class="input-group-text">Building Name</span>
-                        <input wicket:id="editBuildingName" class="form-control" required type="text">
+                        <select class="form-select" wicket:id="buildingName" required></select>
                     </div>
                     <div class="input-group mb-3">
                         <span class="input-group-text">Status</span>
-                        <select wicket:id="status"></select>
+                        <select class="form-select" wicket:id="status"></select>
                     </div>
                     <div class="row">
                         <div class="d-grid col-4 mb-3"></div>
