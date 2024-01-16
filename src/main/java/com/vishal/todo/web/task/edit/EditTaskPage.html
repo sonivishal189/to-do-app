@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:wicket="http://wicket.apache.org">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 
 <head>
     <meta charset="utf-8" />
@@ -8,38 +8,42 @@
 
 <body>
     <wicket:extend>
-        <div class="container">
-            <div class="row m-4">
-                <div class="col text-center">
-                    <h2 wicket:id="editTaskMsg">Editing task id</h2>
+        <div class="mt-4 text-center">
+            <div class="">
+                <div class="card shadow-lg mt-4">
+                    <div class="card-header bg-white mt-1">
+                        <h2 wicket:id="editTaskMsg">Editing task id</h2>
+                    </div>
+                    <div class="card-body">
+                        <form class="form" wicket:id="editSelectedTask">
+                            <div class="input-group mb-3">
+                                <span class="input-group-text">Task</span>
+                                <input wicket:id="task" class="form-control" required type="text">
+                            </div>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text">Assign To</span>
+                                <select class="form-select" wicket:id="empName" required></select>
+                            </div>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text">Building Name</span>
+                                <select class="form-select" wicket:id="buildingName" required></select>
+                            </div>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text">Status</span>
+                                <select class="form-select" wicket:id="status"></select>
+                            </div>
+                            <div class="row">
+                                <div class="d-grid col-4 mb-3"></div>
+                                <div class="d-grid col-4 mb-3">
+                                    <input type="submit" class="btn btn-success" value="Edit Task">
+                                </div>
+                                <div class="d-grid col-4 mb-3">
+                                    <button wicket:id="cancelEdit" class="btn btn-danger">Cancel</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
-                <form class="form" wicket:id="editSelectedTask">
-                    <div class="input-group  mb-3">
-                        <span class="input-group-text">Task</span>
-                        <input wicket:id="task" class="form-control" required type="text">
-                    </div>
-                    <div class="input-group mb-3">
-                        <span class="input-group-text">Assign To</span>
-                        <select class="form-select" wicket:id="empName" required></select>
-                    </div>
-                    <div class="input-group mb-3">
-                        <span class="input-group-text">Building Name</span>
-                        <select class="form-select" wicket:id="buildingName" required></select>
-                    </div>
-                    <div class="input-group mb-3">
-                        <span class="input-group-text">Status</span>
-                        <select class="form-select" wicket:id="status"></select>
-                    </div>
-                    <div class="row">
-                        <div class="d-grid col-4 mb-3"></div>
-                        <div class="d-grid col-4 mb-3">
-                            <input type="submit" class="btn btn-success" value="Edit Task">
-                        </div>
-                        <div class="d-grid col-4 mb-3">
-                            <button wicket:id="cancelEdit" class="btn btn-danger">Cancel</button>
-                        </div>
-                    </div>
-                </form>
             </div>
         </div>
     </wicket:extend>
