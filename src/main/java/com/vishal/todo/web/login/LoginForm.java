@@ -4,6 +4,7 @@ import com.vishal.todo.model.UserDetail;
 import com.vishal.todo.service.UserDetailService;
 import com.vishal.todo.web.home.HomePage;
 import org.apache.wicket.markup.html.basic.Label;
+import org.apache.wicket.markup.html.form.EmailTextField;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.PasswordTextField;
 import org.apache.wicket.markup.html.form.TextField;
@@ -11,7 +12,7 @@ import org.apache.wicket.model.Model;
 
 public class LoginForm extends Form<Model<String>> {
     public static String loggedInUser = "";
-    private TextField<String> usernameField;
+    private EmailTextField usernameField;
     private PasswordTextField passwordField;
     private Label loginStatus;
 
@@ -20,7 +21,7 @@ public class LoginForm extends Form<Model<String>> {
     public LoginForm(String id) {
         super(id);
 
-        usernameField = new TextField<>("username", Model.of(""));
+        usernameField = new EmailTextField("username", Model.of(""));
         passwordField = new PasswordTextField("password", Model.of(""));
         loginStatus = new Label("loginStatus", Model.of(""));
 

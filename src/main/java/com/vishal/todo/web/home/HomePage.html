@@ -9,75 +9,232 @@
 <body>
 	<wicket:extend>
 		<div class="container">
-			<div class="card shadow p-2 rounded mt-3">
+			<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+				<div class="carousel-indicators">
+					<button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+						aria-current="true" aria-label="Slide 1"></button>
+					<button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+						aria-label="Slide 2"></button>
+					<button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+						aria-label="Slide 3"></button>
+					<button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3"
+						aria-label="Slide 4"></button>
+				</div>
+				<div class="carousel-inner">
+					<div class="carousel-item active" data-bs-interval="2000">
+						<img src="carousel5.jpg" class="d-block w-100 img-fluid" alt="...">
+						<div class="carousel-caption d-none d-md-block">
+							<h1 class="display-3 mb-2">Create Tasks</h1>
+							<h4>User can create tasks to track progress.</h4>
+							<p> <a class="link-light" href="#createSteps">Click here for create steps</a> </p>
+						</div>
+					</div>
+					<div class="carousel-item" data-bs-interval="2000">
+						<img src="carousel2.png" class="d-block w-100" alt="...">
+						<div class="carousel-caption d-none d-md-block">
+							<h1 class="display-3 mb-2">View Tasks</h1>
+							<h4>User can view of all the tasks based on it's status. User can also select 1 or more
+								task to view it's details. </h4>
+							<p> <a class="link-light" href="#viewSteps">Click here for view steps</a> </p>
+						</div>
+					</div>
+					<div class="carousel-item" data-bs-interval="2000">
+						<img src="carousel7.jpg" class="d-block w-100" alt="...">
+						<div class="carousel-caption d-none d-md-block">
+							<h1 class="display-3 mb-2">Edit Tasks</h1>
+							<h4>User can easily update any task.</h4>
+							<p> <a class="link-light" href="#editSteps">Click here for edit steps</a> </p>
+						</div>
+					</div>
+					<div class="carousel-item" data-bs-interval="2000">
+						<img src="carousel6.jpg" class="d-block w-100" alt="...">
+						<div class="carousel-caption d-none d-md-block">
+							<h1 class="display-3 mb-2">Delete Tasks</h1>
+							<h4>User also get option to delete 1 or more tasks at a time.</h4>
+							<p> <a class="link-light" href="#deleteSteps">Click here for delete steps</a> </p>
+						</div>
+					</div>
+				</div>
+				<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+					data-bs-slide="prev">
+					<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+					<span class="visually-hidden">Previous</span>
+				</button>
+				<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+					data-bs-slide="next">
+					<span class="carousel-control-next-icon" aria-hidden="true"></span>
+					<span class="visually-hidden">Next</span>
+				</button>
+			</div>
+
+			<div class="card shadow-lg p-2 pb-0 rounded mt-4 bg-white">
 				<div class="card-header bg-white text-center">
 					<h2 wicket:id="welcomeMsg">Hello</h2>
 				</div>
-				<div class="card-body ">
-					<div class="d-grid gap-2 col-6 mx-auto mt-3 mb-3">
-						<button type="button" wicket:id="viewAllTasks" class="btn btn-outline-dark mb-0">
-							View All Tasks
-						</button> <span class="text-danger text-center mt-0"> Click here to see all tasks.</span>
+				<div class="card-body">
+					<div class="d-grid gap-2 col-6 mx-auto mt-3">
+						<button type="button" wicket:id="viewAllTasks" class="btn btn-lg btn-success bg-gradient mb-0">
+							Go to To-Do Applcation
+						</button>
+						<span class="text-danger text-center mt-0"> Click here to see all tasks.</span>
 					</div>
-					<div class="row mb-3 text-left">
-						<h5 class="text-success">This is a To-Do application to track the activities of a construction
-							company "Dream House
-							Realty". It is developed using Java, Apache Wicket, Hibernate, Maven, Jetty, Bootstrap, HTML
-							and PostgresDB.</h5>
-						<h5 class="text-primary"> Various features provided are: </h5>
-						<h6 class="text-dark">
-							<ol>
-								<li> A login page with basic authentication to login in the application by entering
-									email and password. It also contains a registration feature to allow new users. If
-									entered credentials are wrong then an appropriate error message is displayed on
-									screen. On successful login user get redirected to Home page displaying a welcome
-									message with his/her name.
-								</li>
-								<li> Home Page contains a "View All Tasks" button and describes the features provided by
-									this application. On click of "View All Tasks" button a new page is loaded which
-									displays all the tasks which are currently present.
-								</li>
-								<li>View All Tasks page displays the task tittle, employee name and building name of
-									the existing tasks. It also contains buttons to perform various operation like
-									create
-									new task, view 1 or more tasks, edit a task and delete 1 or more tasks.
-								</li>
-								<li> Using "Create New Task" button user can create a new task. While creating a new
-									task user should provide task title and building name, employee name is a optional
-									field which can be added later. While creating a new task this application detects
-									the loggedIn user name and save it along with task created in the Created By field
-									along with timestamp in Created On field. If employee name is given as a part of
-									task creation the Status of the task is made to be "Assigned" else it is "New".
-								</li>
-								<li> "View Task" button allows user to select 1 or more tasks and display it details. This redirects to the page containing all the details of the selected tasks,
-									details like task id, task title, whom it is assigned to, building name for which
-									this task is created, status of task (new or assigned), who created this task, when
-									it was created, who updated the task and when it was updated. If user try to view
-									task without selecting any tasks then a error msg is displayed "Select 1 or more
-									task to View". View task page also provide a back button which redirects to View all
-									task page.
-								</li>
-								<li> User can also edit 1 task at a time by selecting a task and clicking on "Edit Task"
-									button. This redirects user to edit task page with the pre-populated details of the
-									task. It allows user to edit task title, employee name and building name. On
-									submission of edit this application update the details in DB with the details provided by
-									user along with Updated By and Updated On fields. Updated By is updated to the emp
-									name of the user logged in. If a user tries to edit task without selecting or
-									selecting more than 1 task then appropriate error message is displayed. On
-									successful updation user get redirected to view all tasks page with it updated
-									records.
-								</li>
-								<li> A user can also delete 1 or more tasks by selecting them and clicking on "Delete
-									Task" button. User must select 1 or more task to delete it else a error message is
-									displayed.
-								</li>
-								<li> This application comes with a Navigation bar which consists of Brand Logo, Brand
-									Name and a logout button. At any given time if a user click on brand name or logo it
-									gets redirected to the Home page. On click of Logout button user exit the
-									application at any given time.
-								</li>
-							</ol>
-						</h6>
+					<div class="row p-3 text-left">
+						<h5 class="lh-base mb-4">
+							This application is a To-Do application that is designed to track the tasks of a
+							construction company called "Dream House Realty". It has been developed using Java, Apache
+							Wicket, Hibernate, Maven, Jetty, Bootstrap, HTML, and PostgresDB.
+						</h5>
+						<h5 class="lh-base mb-4">
+							The application offers various features, including a login page with basic authentication
+							where users can enter their email and password to access the application. It also includes a
+							registration feature for new users. If the entered credentials are incorrect, an appropriate
+							error message is displayed on the screen. Upon successful login, users are redirected to the
+							Home page.
+						</h5>
+						<h5 class="lh-base">
+							The homepage features a "Go to To-Do Application" button that leads to the main to-do
+							application. The main application exhibits all the tasks that are currently available,
+							categorized by their respective status. Additionally, it provides a count of all tasks and
+							tasks in each status category. On this page, there are buttons available to perform various
+							operations such as creating, viewing, editing, and deleting tasks.
+						</h5>
+					</div>
+				</div>
+			</div>
+			<div>
+				<div class="card shadow-lg p-0 m-0 rounded mt-4 bg-white">
+					<div class="card-header m-0 p-0">
+						<h4 class="text-center text-white p-3 m-0 bg-secondary bg-gradient">Features in To-Do
+							Application</h4>
+					</div>
+				</div>
+				<div>
+					<div class="card shadow-lg mt-3" id="createSteps">
+						<div class="row">
+							<div class="col-5 me-0 pe-0">
+								<img class="img-thumbnail m-0 p-0" src="img1.jpg" alt="...">
+							</div>
+							<div class="col ms-0 ps-0">
+								<div class="card-header">
+									<h4 class="mt-1">Create Task</h4>
+								</div>
+								<div class="card-body">
+									<h6 class="lh-base">
+										<ol>
+											<li>User can create a task by clicking on the "Create Task" button.
+											</li>
+											<li>Clicking the button opens a prompt that requires three fields:
+												Task Title, Assignee Name, and Building Name. Task title and
+												building name are mandatory fields.</li>
+											<li>The user needs to select the Assignee Name and Building Name
+												from the dropdown options.</li>
+											<li>After filling in the details, the user should click on the
+												"Create New Task" button in the prompt to save the task. This also
+												update the task counts on the screen.</li>
+											<li>If the Assignee Name is not provided during task creation, the
+												task status is considered "New"; otherwise, it is considered
+												"Assigned".</li>
+											<li>The application also saves the details of the user who created
+												the task, along with the task creation timestamp.</li>
+											<li>The creator name is taken from the loggedIn user's details.</li>
+										</ol>
+									</h6>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="card shadow-lg mt-3" id="viewSteps">
+						<div class="row">
+							<div class="col me-0 pe-0">
+								<div class="card-header">
+									<h4 class="mt-1">View Task</h4>
+								</div>
+								<div class="card-body">
+									<h6 class="lh-base">
+										<ol>
+											<li>The main application page allows users to view tasks by selecting 1 or
+												more tasks and clicking "View Task" button.</li>
+											<li>Users need to select the desired task by clicking on its corresponding
+												checkbox. </li>
+											<li>View task page displays all the information about the selected tasks.
+												This includes the task id, task title, assigned person, building name
+												associated with the task, task status, task creator, creation date, task
+												updater, and update date.</li>
+											<li>User must select at least one task before clicking the 'View Task'
+												button, if not then an error message will be displayed.</li>
+											<li>View task page provides "Back" button to navigate back to main
+												application page.</li>
+										</ol>
+									</h6>
+								</div>
+							</div>
+							<div class="col-5 ms-0 ps-0">
+								<img class="img-thumbnail m-0 p-0" src="img2.png" alt="...">
+							</div>
+						</div>
+					</div>
+					<div class="card shadow-lg mt-3" id="editSteps">
+						<div class="row">
+							<div class="col-5 me-0 pe-0">
+								<img class="img-thumbnail m-0 p-0" src="img3.jpg" alt="...">
+							</div>
+							<div class="col ms-0 ps-0">
+								<div class="card-header">
+									<h4 class="mt-1">Edit Task</h4>
+								</div>
+								<div class="card-body">
+									<h6 class="lh-base">
+										<ol>
+											<li>To edit a task, the user needs to select the task by clicking on the
+												corresponding checkbox. and click on the "Edit Task" button.</li>
+											<li>Clicking on the edit button redirects the user to the edit task page
+												which populates the details of the selected task.</li>
+											<li>The user can edit the task title, status, assignee name, and building
+												name. The assignee name, status, and building name is selected
+												from dropdown options.</li>
+											<li>After editing, the user can submit the changes and applciation updates
+												the task details in database and also udpate the correponding task count
+												on the screen.</li>
+											<li>The application also updates the details of the user who updated
+												the task, along with the task updation timestamp.</li>
+											<li>The updater name is taken from the loggedIn user's details.</li>
+											<li>User can only edit 1 task at a time. </li>
+										</ol>
+									</h6>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="card shadow-lg mt-3 mb-3" id="deleteSteps">
+						<div class="row">
+							<div class="col me-0 pe-0">
+								<div class="card-header">
+									<h4 class="mt-1">Delete Task</h4>
+								</div>
+								<div class="card-body">
+									<h6 class="lh-base">
+										<ol>
+											<li>The user has the ability to delete one or multiple tasks at once by
+												selecting the corresponding task checkboxes and then clicking on the
+												"Delete Task" button.</li>
+											<li>It is essential for at least one task to be selected in order to
+												initiate the delete operation successfully.</li>
+											<li>Once the user clicks on the delete button, the task record associated
+												with the selected task(s) will be removed from the database.</li>
+											<li>Additionally, the task count displayed on the interface will be promptly
+												updated to reflect the modified number of remaining tasks following the
+												deletion process.</li>
+										</ol>
+									</h6>
+								</div>
+							</div>
+							<div class="col-5 ms-0 ps-0">
+								<img class="img-thumbnail m-0 p-0" src="img4.jpg" alt="...">
+							</div>
+						</div>
+					</div>
+					<div class="row text-center ms-3 me-3 mb-5">
+						<a class="btn btn-secondary bg-gradient" href="#top">Back to top</a>
 					</div>
 				</div>
 			</div>

@@ -33,6 +33,6 @@ public class HomePage extends BasePage {
     }
 
     private void addWelcomeMessage() {
-        add(new Label("welcomeMsg", "Hi " + LoginForm.loggedInUser + "! Welcome to To-Do Application."));
+        add(new Label("welcomeMsg", "Hi " + LoginForm.loggedInUser + "! Welcome in To-Do Application."));
     }
 }
