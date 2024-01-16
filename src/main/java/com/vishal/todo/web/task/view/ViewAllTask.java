@@ -2,6 +2,7 @@ package com.vishal.todo.web.task.view;
 
 import com.vishal.todo.model.ToDoTask;
 import com.vishal.todo.service.ToDoService;
+import com.vishal.todo.util.Constants;
 import com.vishal.todo.web.BasePage;
 import com.vishal.todo.web.login.LoginForm;
 import com.vishal.todo.web.login.LoginPage;
@@ -19,6 +20,7 @@ import org.apache.wicket.model.Model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Slf4j
 public class ViewAllTask extends BasePage {
@@ -42,9 +44,9 @@ public class ViewAllTask extends BasePage {
 
         Form<Void> form = new Form<>("form");
         add(form);
-        form.add(viewPageMsgLabel);
+        add(viewPageMsgLabel);
 
-        loadAllTaskToView(form);
+        loadTasksByStatus();
 
         viewSelectedTasks(form);
 
@@ -52,10 +54,48 @@ public class ViewAllTask extends BasePage {
 
         editSelectedTask(form);
 
-        addCreateTaskForm(form);
+        addCreateTaskForm();
     }
 
-    private void addCreateTaskForm(Form<Void> form) {
+    private void loadTasksByStatus() {
+        add(new Label("totalTaskCount", allTasks.size()));
+
+        Form<Void> newTaskForm = new Form<>("newTask");
+        add(newTaskForm);
+        List<ToDoTask> newTaskList = getTaskList(Constants.NEW);
+        loadTasksToView(newTaskForm, "newTaskList", newTaskList);
+        add(new Label("newTaskCount", newTaskList.size()));
+
+        Form<Void> assignedTaskForm = new Form<>("assignedTask");
+        add(assignedTaskForm);
+        List<ToDoTask> assignedTaskList = getTaskList(Constants.ASSIGNED);
+        loadTasksToView(assignedTaskForm, "assignedTaskList", assignedTaskList);
+        add(new Label("assignedTaskCount", assignedTaskList.size()));
+
+        Form<Void> inProgressTaskForm = new Form<>("inProgress");
+        add(inProgressTaskForm);
+        List<ToDoTask> inProgressTaskList = getTaskList(Constants.IN_PROGRESS);
+        loadTasksToView(inProgressTaskForm, "inProgressList", inProgressTaskList);
+        add(new Label("inProgressTaskCount", inProgressTaskList.size()));
+
+        Form<Void> completedTaskForm = new Form<>("completed");
+        add(completedTaskForm);
+        List<ToDoTask> completedTaskList = getTaskList(Constants.COMPLETED);
+        loadTasksToView(completedTaskForm, "completedList", completedTaskList);
+        add(new Label("completedTaskCount", completedTaskList.size()));
+
+        Form<Void> onHoldTaskForm = new Form<>("onHold");
+        add(onHoldTaskForm);
+        List<ToDoTask> onHoldTaskList = getTaskList(Constants.ON_HOLD);
+        loadTasksToView(onHoldTaskForm, "onHoldList", onHoldTaskList);
+        add(new Label("onHoldTaskCount", onHoldTaskList.size()));
+    }
+
+    private List<ToDoTask> getTaskList(String status) {
+        return allTasks.stream().filter(task -> task.getStatus().equals(status)).collect(Collectors.toList());
+    }
+
+    private void addCreateTaskForm() {
         CreateTaskForm createTaskForm = new CreateTaskForm("createTask");
         add(createTaskForm);
     }
@@ -125,8 +165,8 @@ public class ViewAllTask extends BasePage {
         form.add(deleteTaskBtn);
     }
 
-    private void loadAllTaskToView(Form<Void> form) {
-        ListView<ToDoTask> todoList = new ListView<ToDoTask>("todoList", allTasks) {
+    private void loadTasksToView(Form<Void> form, String taskListName, List<ToDoTask> taskList) {
+        ListView<ToDoTask> todoList = new ListView<ToDoTask>(taskListName, taskList) {
             @Override
             protected void populateItem(ListItem<ToDoTask> listItem) {
 

@@ -8,86 +8,329 @@
 
 <body>
     <wicket:extend>
-        <div class="container card shadow p-2 rounded text-center mt-3">
+        <div class="mt-3">
             <div class="row">
-                <div class="d-grid gap-2 col-6 mx-auto mt-3">
-                    <!-- Add new Task starts -->
-                    <button type="button" class="btn btn-success" data-bs-toggle="modal"
-                        data-bs-target="#addBuildingModal">
-                        Create New Task
-                    </button>
-
-                    <div class="modal fade" id="addBuildingModal" tabindex="-1" aria-labelledby="addBuildingModalLabel"
-                        aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="addBuildingModalLabel">Create New Task</h5>
-                                    <button type="button" class="btn btn-close" data-bs-dismiss="modal"
-                                        aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    <form class="form" wicket:id="createTask">
-                                        <div class="input-group  mb-3">
-                                            <span class="input-group-text">Task</span>
-                                            <input wicket:id="task" class="form-control" required type="text">
+                <div class="row text-center">
+                    <h3 class="text-warning" wicket:id="viewPageMsg"></h3>
+                </div>
+                <div class="col-lg-9">
+                    <div>
+                        <div class="col-lg-6 float-start">
+                            <div class="container col-md-12">
+                                <form wicket:id="newTask">
+                                    <div class="card shadow rounded">
+                                        <div class="card-header text-center bg-secondary bg-gradient">
+                                            <h3 class="text-white p-1">New Tasks</h3>
                                         </div>
-                                        <div class="input-group mb-3">
-                                            <span class="input-group-text">Assign To</span>
-                                            <select class="form-select" wicket:id="empName"></select>
+                                        <div class="card-body mb-0">
+                                            <table class="table table-hover">
+                                                <tbody>
+                                                    <tr wicket:id="newTaskList" class="p-0">
+                                                        <td class="p-0 m-0">
+                                                            <div class="card shadow mb-3 m-0 p-3">
+                                                                <h5 class="card-title">
+                                                                    <span><input class="form-check-input mt-1 me-2"
+                                                                            type="checkbox"
+                                                                            wicket:id="selected" /></span>
+                                                                    #<span wicket:id="id">id</span>
+                                                                    <span wicket:id="task">Task Title</span>
+                                                                </h5>
+                                                                <div class="row m-0 p-0">
+                                                                    <div class="col-6 text-start m-0 p-0">
+                                                                        <span class="fw-bold"> Assigned To: </span>
+                                                                        <span wicket:id="empName">
+                                                                            Emp Name</span>
+                                                                    </div>
+                                                                    <div class="col-6 text-end m-0 p-0">
+                                                                        <span class="fw-bold">Building Name: </span>
+                                                                        <span wicket:id="buildingName">
+                                                                            Building Name</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
                                         </div>
-                                        <div class="input-group mb-3">
-                                            <span class="input-group-text">Building Name</span>
-                                            <select class="form-select" wicket:id="buildingName" required></select>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 float-end">
+                            <div class="container col-md-12">
+                                <form wicket:id="assignedTask">
+                                    <div class="card shadow rounded">
+                                        <div class="card-header text-center bg-primary bg-gradient">
+                                            <h3 class="text-white p-1">Assigned Tasks</h3>
                                         </div>
-                                        <div class="mb-3">
-                                            <input type="submit" class="d-grid gap-2 col-6 mx-auto btn btn-success"
-                                                value="Create New Task">
+                                        <div class="card-body mb-0">
+                                            <table class="table table-hover">
+                                                <tbody>
+                                                    <tr wicket:id="assignedTaskList" class="p-0">
+                                                        <td class="p-0 m-0">
+                                                            <div class="card shadow mb-3 m-0 p-3">
+                                                                <h5 class="card-title">
+                                                                    <span><input class="form-check-input mt-1 me-2"
+                                                                            type="checkbox"
+                                                                            wicket:id="selected" /></span>
+                                                                    #<span wicket:id="id">id</span>
+                                                                    <span wicket:id="task">Task Title</span>
+                                                                </h5>
+                                                                <div class="row m-0 p-0">
+                                                                    <div class="col-6 text-start m-0 p-0">
+                                                                        <span class="fw-bold"> Assigned To: </span>
+                                                                        <span wicket:id="empName">
+                                                                            Emp Name</span>
+                                                                    </div>
+                                                                    <div class="col-6 text-end m-0 p-0">
+                                                                        <span class="fw-bold">Building Name: </span>
+                                                                        <span wicket:id="buildingName">
+                                                                            Building Name</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
                                         </div>
-                                    </form>
-                                </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 float-start mt-4">
+                            <div class="container col-md-12">
+                                <form wicket:id="inProgress">
+                                    <div class="card shadow rounded">
+                                        <div class="card-header text-center bg-info bg-gradient">
+                                            <h3 class="text-white p-1">In Progress Tasks</h3>
+                                        </div>
+                                        <div class="card-body mb-0">
+                                            <table class="table table-hover">
+                                                <tbody>
+                                                    <tr wicket:id="inProgressList" class="p-0">
+                                                        <td class="p-0 m-0">
+                                                            <div class="card shadow mb-3 m-0 p-3">
+                                                                <h5 class="card-title">
+                                                                    <span><input class="form-check-input mt-1 me-2"
+                                                                            type="checkbox"
+                                                                            wicket:id="selected" /></span>
+                                                                    #<span wicket:id="id">id</span>
+                                                                    <span wicket:id="task">Task Title</span>
+                                                                </h5>
+                                                                <div class="row m-0 p-0">
+                                                                    <div class="col-6 text-start m-0 p-0">
+                                                                        <span class="fw-bold"> Assigned To: </span>
+                                                                        <span wicket:id="empName">
+                                                                            Emp Name</span>
+                                                                    </div>
+                                                                    <div class="col-6 text-end m-0 p-0">
+                                                                        <span class="fw-bold">Building Name: </span>
+                                                                        <span wicket:id="buildingName">
+                                                                            Building Name</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 float-end mt-4">
+                            <div class="container col-md-12">
+                                <form wicket:id="completed">
+                                    <div class="card shadow rounded">
+                                        <div class="card-header text-center bg-success bg-gradient">
+                                            <h3 class="text-white p-1">Completed Tasks</h3>
+                                        </div>
+                                        <div class="card-body mb-0">
+                                            <table class="table table-hover">
+                                                <tbody>
+                                                    <tr wicket:id="completedList" class="p-0">
+                                                        <td class="p-0 m-0">
+                                                            <div class="card shadow mb-3 m-0 p-3">
+                                                                <h5 class="card-title">
+                                                                    <span><input class="form-check-input mt-1 me-2"
+                                                                            type="checkbox"
+                                                                            wicket:id="selected" /></span>
+                                                                    #<span wicket:id="id">id</span>
+                                                                    <span wicket:id="task">Task Title</span>
+                                                                </h5>
+                                                                <div class="row m-0 p-0">
+                                                                    <div class="col-6 text-start m-0 p-0">
+                                                                        <span class="fw-bold"> Assigned To: </span>
+                                                                        <span wicket:id="empName">
+                                                                            Emp Name</span>
+                                                                    </div>
+                                                                    <div class="col-6 text-end m-0 p-0">
+                                                                        <span class="fw-bold">Building Name: </span>
+                                                                        <span wicket:id="buildingName">
+                                                                            Building Name</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 float-start mt-4">
+                            <div class="container col-md-12">
+                                <form wicket:id="onHold">
+                                    <div class="card shadow rounded">
+                                        <div class="card-header text-center bg-warning bg-gradient">
+                                            <h3 class="text-white p-1">On Hold Tasks</h3>
+                                        </div>
+                                        <div class="card-body mb-0">
+                                            <table class="table table-hover">
+                                                <tbody>
+                                                    <tr wicket:id="onHoldList" class="p-0">
+                                                        <td class="p-0 m-0">
+                                                            <div class="card shadow mb-3 m-0 p-3">
+                                                                <h5 class="card-title">
+                                                                    <span><input class="form-check-input mt-1 me-2"
+                                                                            type="checkbox"
+                                                                            wicket:id="selected" /></span>
+                                                                    #<span wicket:id="id">id</span>
+                                                                    <span wicket:id="task">Task Title</span>
+                                                                </h5>
+                                                                <div class="row m-0 p-0">
+                                                                    <div class="col-6 text-start m-0 p-0">
+                                                                        <span class="fw-bold"> Assigned To: </span>
+                                                                        <span wicket:id="empName">
+                                                                            Emp Name</span>
+                                                                    </div>
+                                                                    <div class="col-6 text-end m-0 p-0">
+                                                                        <span class="fw-bold">Building Name: </span>
+                                                                        <span wicket:id="buildingName">
+                                                                            Building Name</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
-                    <!-- Add new Task ends -->
+                </div>
+                <div class="col-lg-3">
+                    <div class="card rounded shadow-lg text-center p-3">
+                        <div class="crud-operation">
+                            <div class="row">
+                                <div class="create-btn">
+                                    <!-- Add new Task starts -->
+                                    <button type="button"
+                                        class="btn btn-outline-success border-dark text-dark mb-3 mt-4 col-lg-10"
+                                        data-bs-toggle="modal" data-bs-target="#addBuildingModal">
+                                        Create Task
+                                    </button>
+                                    <div class="modal fade" id="addBuildingModal" tabindex="-1"
+                                        aria-labelledby="addBuildingModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="addBuildingModalLabel">Create New Task
+                                                    </h5>
+                                                    <button type="button" class="btn btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form class="form" wicket:id="createTask">
+                                                        <div class="input-group  mb-3">
+                                                            <span class="input-group-text">Task</span>
+                                                            <input wicket:id="task" class="form-control" required
+                                                                type="text">
+                                                        </div>
+                                                        <div class="input-group mb-3">
+                                                            <span class="input-group-text">Assign To</span>
+                                                            <select class="form-select" wicket:id="empName"></select>
+                                                        </div>
+                                                        <div class="input-group mb-3">
+                                                            <span class="input-group-text">Building Name</span>
+                                                            <select class="form-select" wicket:id="buildingName"
+                                                                required></select>
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <input type="submit"
+                                                                class="d-grid gap-2 col-6 mx-auto btn btn-success"
+                                                                value="Create New Task">
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Add new Task ends -->
+                                </div>
+                            </div>
+                            <div>
+                                <form class="mb-3" wicket:id="form">
+                                    <div class=" mb-3">
+                                        <button wicket:id="viewTaskButton"
+                                            class="btn btn-outline-primary border-dark text-dark col-lg-10">View
+                                            Task</button>
+                                    </div>
+                                    <div class=" mb-3">
+                                        <button wicket:id="editTaskButton"
+                                            class="btn btn-outline-warning border-dark text-dark col-lg-10">Edit
+                                            Task</button>
+                                    </div>
+                                    <div class="mb-4">
+                                        <button wicket:id="deleteTaskButton"
+                                            class="btn btn-outline-danger border-dark col-lg-10">Delete
+                                            Task</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card rounded shadow-lg mt-4 fs-5">
+                        <div class="card-header text-center fw-bold p-2 pt-3 bg-dark bg-gradient text-white">
+                            <h5> Task Count </h5>
+                        </div>
+                        <div class="card-body p-3">
+                            <div class="row text-danger">
+                                <div class="col-lg-10 text-start">Total</div>
+                                <div class="col text-end" wicket:id="totalTaskCount">total</div>
+                            </div>
+                            <div class="row text-secondary">
+                                <div class="col-lg-10 text-start">New</div>
+                                <div class="col text-end" wicket:id="newTaskCount">new</div>
+                            </div>
+                            <div class="row text-primary">
+                                <div class="col-lg-10 text-start">Assigned</div>
+                                <div class="col text-end" wicket:id="assignedTaskCount">assigned</div>
+                            </div>
+                            <div class="row text-info">
+                                <div class="col-lg-10 text-start">In Progress</div>
+                                <div class="col text-end" wicket:id="inProgressTaskCount">in progress</div>
+                            </div>
+                            <div class="row text-success">
+                                <div class="col-lg-10 text-start">Completed</div>
+                                <div class="col text-end" wicket:id="completedTaskCount">completed</div>
+                            </div>
+                            <div class="row text-warning">
+                                <div class="col-lg-10 text-start">On Hold</div>
+                                <div class="col text-end" wicket:id="onHoldTaskCount">on hold</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <form class="mt-3" wicket:id="form">
-                <div class="row">
-                    <h3 class="text-danger" wicket:id="viewPageMsg"></h3>
-                </div>
-                <div class="row">
-                    <div class="d-grid col-4 mb-3">
-                        <button wicket:id="viewTaskButton" class="btn btn-primary">View Task</button>
-                    </div>
-                    <div class="d-grid col-4 mb-3">
-                        <button wicket:id="editTaskButton" class="btn btn-warning">Edit Task</button>
-                    </div>
-                    <div class="d-grid col-4 mb-3">
-                        <button wicket:id="deleteTaskButton" class="btn btn-danger">Delete Task</button>
-                    </div>
-                </div>
-                <table class="table table-hover mt-4">
-                    <thead>
-                        <tr>
-                            <th></th>
-                            <th>ID</th>
-                            <th>Task</th>
-                            <th>Assigned To</th>
-                            <th>Building</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr wicket:id="todoList">
-                            <td><input class="form-check-input" type="checkbox" wicket:id="selected" /></td>
-                            <td wicket:id="id">ID</td>
-                            <td wicket:id="task">Task</td>
-                            <td wicket:id="empName">Employee</td>
-                            <td wicket:id="buildingName">Building</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </form>
         </div>
     </wicket:extend>
 </body>
