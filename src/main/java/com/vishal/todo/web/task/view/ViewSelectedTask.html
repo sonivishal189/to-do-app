@@ -11,30 +11,65 @@
         <div class="container m-4">
             <div class="card card-body">
                 <table class="table table-hover">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Task</th>
-                            <th>Assigned To</th>
-                            <th>Building</th>
-                            <th>Status</th>
-                            <th>Created By</th>
-                            <th>Created On</th>
-                            <th>Updated By</th>
-                            <th>Updated On</th>
-                        </tr>
-                    </thead>
                     <tbody>
                         <tr wicket:id="selectedTaskViewList">
-                            <td wicket:id="id">ID</td>
-                            <td wicket:id="task">Task</td>
-                            <td wicket:id="empName">Employee</td>
-                            <td wicket:id="buildingName">Building</td>
-                            <td wicket:id="status">Status</td>
-                            <td wicket:id="createdBy">Created by</td>
-                            <td wicket:id="createdOn">Created by</td>
-                            <td wicket:id="updatedBy">Created by</td>
-                            <td wicket:id="updatedOn">Created by</td>
+                            <td>
+                                <div class="card shadow-lg mb-3">
+                                    <div class="card-header mt-1">
+                                        <h4>
+                                            # <span wicket:id="id">ID</span>  <span wicket:id="task">Task</span>
+                                        </h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="row mb-2">
+                                            <div class="col">
+                                                <h6>
+                                                    <span class="fw-bold">Assigned To: </span> 
+                                                    <span wicket:id="empName">Employee</span>
+                                                </h6>
+                                            </div>
+                                            <div class="col text-center">
+                                                <h6>
+                                                    <span class="fw-bold">Building Name: </span> 
+                                                    <span wicket:id="buildingName">Building</span>
+                                                </h6>
+                                            </div>
+                                            <div class="col text-end">
+                                                <h6>
+                                                    <span class="fw-bold">Status: </span> 
+                                                    <span wicket:id="status">Status</span>
+                                                </h6>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <h6>
+                                                    <span class="fw-bold">Created By: </span> 
+                                                    <span wicket:id="createdBy">createdBy</span>
+                                                </h6>
+                                            </div>
+                                            <div class="col">
+                                                <h6>
+                                                    <span class="fw-bold">Created On: </span> 
+                                                    <span wicket:id="createdOn">createdOn</span>
+                                                </h6>
+                                            </div>
+                                            <div class="col text-end">
+                                                <h6>
+                                                    <span class="fw-bold">Updated By: </span> 
+                                                    <span wicket:id="updatedBy">updatedBy</span>
+                                                </h6>
+                                            </div>
+                                            <div class="col text-end">
+                                                <h6>
+                                                    <span class="fw-bold">Updated On: </span> 
+                                                    <span wicket:id="updatedOn">updatedOn</span>
+                                                </h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
