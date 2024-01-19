@@ -2,8 +2,6 @@ package com.vishal.todo.web.login;
 
 import com.vishal.todo.model.UserDetail;
 import com.vishal.todo.service.UserDetailService;
-import com.vishal.todo.web.home.HomePage;
-import lombok.extern.slf4j.Slf4j;
 import org.apache.wicket.markup.html.form.EmailTextField;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.PasswordTextField;
@@ -17,6 +15,7 @@ public class NewUserRegistrationForm extends Form<Model<String>> {
     private TextField<String> firstName;
     private TextField<String> lastName;
     private PasswordTextField userPassword;
+
     public NewUserRegistrationForm(String id) {
         super(id);
 

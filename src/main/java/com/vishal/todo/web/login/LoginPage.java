@@ -1,7 +1,6 @@
 package com.vishal.todo.web.login;
 
 import com.vishal.todo.service.UserDetailService;
-import lombok.extern.slf4j.Slf4j;
 import org.apache.wicket.markup.head.CssHeaderItem;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
